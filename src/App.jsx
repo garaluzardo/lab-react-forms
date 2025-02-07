@@ -16,13 +16,41 @@ function App() {
   const [graduationYear, setGraduationYear] = useState(2023);
   const [graduated, setGraduated] = useState(false);
 
+  // ENvío del formulario para la Iteration 3
+  const handleSubmit = e => {
+    e.preventDefault(); // Previene que la página se recargue por defecto cuando el formulario sea enviado
 
+    // Creación del nuevo estudiante a partir de los datos que ingresa el usuario
+    const newStudent = {
+      fullName,
+      email,
+      phone,
+      program,
+      profileImage,
+      graduationYear,
+      graduated,
+    };
+
+    // Actualizamos el estado de students añadiendo el newStudent
+    setStudents([...students, newStudent]);
+
+    // Reseteo de los campos del formulario
+    setFullName("");
+    setProfileImage("");
+    setPhone("");
+    setEmail("");
+    setProgram("Web Dev");
+    setGraduationYear(2023);
+    setGraduated(false);
+  };
+
+  console.log(students);
   return (
     <div className="App pt-20">
       <Navbar />
 
       {/* FORM */}
-      <form>
+      <form onSubmit={handleSubmit}>
         <span>Add a Student</span>
         <div>
           <label>
